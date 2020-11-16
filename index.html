@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        #my-canvas {
+            width: 400px;
+            height: 300px;
+            border: 2px solid;
+            /* background: black; */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="my-canvas"></canvas>
+    <script>
+        var canvas = document.querySelector('#my-canvas')
+        var ctx = canvas.getContext('2d')
+        ctx.beginPath()
+        // ctx.fillStyle = 'skyblue'
+        var gradient = ctx.createLinearGradient(0, 0, 0, 100)
+        ctx.fillStyle = gradient
+        ctx.fillRect(25, 25, 200, 100)
+        drawImage(ctx,0,4)
+
+        function drawImage(_ctx,rowIndex,colIndex) {
+            var ctx = _ctx
+            var img = new Image()
+            img.src = './images/cartoon.jpg'
+            img.onload = function () {
+                ctx.drawImage(img, rowIndex*450/3, colIndex*450/4, 450 / 3, 450 / 4, 20, 20, 150, 112)
+                //     setInterval(()=>{
+                //         ctx.x += 10
+                //         },500)
+                // }
+            }
+            
+        }
+            drawImage(ctx)
+
+    </script>
+</body>
+
+</html>
