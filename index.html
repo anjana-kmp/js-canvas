@@ -25,22 +25,28 @@
         var gradient = ctx.createLinearGradient(0, 0, 0, 100)
         ctx.fillStyle = gradient
         ctx.fillRect(25, 25, 200, 100)
-        drawImage(ctx,0,4)
+        drawImage(ctx, 0, 1)
 
-        function drawImage(_ctx,rowIndex,colIndex) {
+        function drawImage(_ctx, colIndex, rowIndex) {
             var ctx = _ctx
             var img = new Image()
             img.src = './images/cartoon.jpg'
             img.onload = function () {
-                ctx.drawImage(img, rowIndex*450/3, colIndex*450/4, 450 / 3, 450 / 4, 20, 20, 150, 112)
-                //     setInterval(()=>{
-                //         ctx.x += 10
-                //         },500)
-                // }
+                ctx.drawImage(img, colIndex * 450 / 3, rowIndex * 450 / 4, 450 / 3, 450 / 4, 20, 20, 150, 112)
+                let x = 1
+                setInterval(() => {
+                    x+=5
+                    ctx.drawImage(img, x+(colIndex * 450 / 3), rowIndex * 450 / 4, 450 / 3, 450 / 4, 20, 20, 150, 112)
+
+
+                }, 500)
             }
-            
+
         }
-            drawImage(ctx)
+            
+        
+    
+        drawImage(ctx)
 
     </script>
 </body>
